@@ -1,50 +1,48 @@
-# AI-Powered Job Matching System
+# Automated AI Sales Reporting Engine
 
 ## Problem Solved
-Job seekers waste hours manually browsing job boards and evaluating 
-listings that don't match their skills. This system automates daily 
-job hunting — fetching, scoring, and delivering only relevant 
-opportunities every morning.
+Sales teams waste hours every week manually pulling data, writing 
+reports, and distributing them via email. This system automates 
+the entire reporting cycle — from data extraction to email delivery 
+— with zero human involvement.
 
 ## How It Works
 1. Scheduled trigger fires every morning
-2. Fetches live job listings from We Work Remotely RSS feed
-3. Deduplication check against previously logged jobs
-4. Claude AI scores each job 1-10 for relevance
-5. Results logged to Google Sheets
-6. Morning digest email delivered with top opportunities
+2. Reads sales data from Google Sheets automatically
+3. Data formatted and sent to Claude AI
+4. Claude generates professional HTML report with executive 
+   summary, observations, and recommendations
+5. Report delivered via Gmail automatically
 
 ## Workflow Architecture
 ```
-Schedule Trigger → Get Existing Jobs (Google Sheets) → HTTP Request (RSS) → Parse Jobs → Claude API → Format Row → Append to Sheets → Build Email → Gmail
+Schedule Trigger → Google Sheets → Code (format data) → Claude API → Gmail (send report)
 ```
 
 ## Tech Stack
 - **Orchestration:** n8n
-- **Job Source:** We Work Remotely RSS feed
+- **Data Source:** Google Sheets
 - **AI:** Anthropic Claude API (claude-sonnet-4)
-- **Logging:** Google Sheets
 - **Email:** Gmail
 - **Language:** JavaScript (n8n Code nodes)
 
 ## Key Features
 - Fully automated daily execution
-- Deduplication — never shows the same job twice
-- AI relevance scoring 1-10 with reasoning
-- Apply recommendation — true or false
-- Google Sheets audit log of all scored jobs
-- Clean HTML email digest with apply links
-- Configurable skill profile in Claude prompt
+- AI-generated executive summary
+- Key observations and trend analysis
+- Actionable recommendations
+- Professional HTML email formatting
+- Zero manual steps required
 
-## Sample Output
-Each job scored with:
-- Relevance Score (1-10)
-- Reason for score
-- Apply recommendation
-- Direct link to job posting
+## Report Sections
+| Section | Description |
+|---|---|
+| Executive Summary | High level overview of performance |
+| Key Observations | Notable trends and patterns |
+| Recommendations | Actionable next steps |
 
 ## Business Value
-- Eliminates hours of daily manual job searching
-- Delivers pre-scored opportunities directly to inbox
-- Fully configurable for any skill profile
-- Scales to multiple job boards simultaneously
+- Eliminates 2-3 hours of weekly manual reporting
+- Delivers insights every morning before business hours
+- Consistent professional formatting every time
+- Scales to any data structure or reporting frequency
